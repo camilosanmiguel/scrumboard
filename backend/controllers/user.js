@@ -17,7 +17,7 @@ const registerUser = async (req,res) => {
 
     let user = new User({
         name:req.body.name,
-        description: req.body.description,
+        email: req.body.email,
         password: hash,
         roleId: role._id,
         dbStatus:true,

@@ -15,9 +15,10 @@ userSchema.methods.generateJWT = function () {
     return jwt.sign({
         _id: this._id,
         name:this.name,
+        roleId: this.roleId,
         iat: moment().unix(),
     },
-    process.env.SECRET_KEY
+    process.env.SECRET_KEY_JWT
     );
 }
 
