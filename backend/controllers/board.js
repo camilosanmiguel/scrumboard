@@ -1,5 +1,7 @@
 const Board = require("../models/board");
 const mongoose = require("mongoose");
+const fs = require("fs");
+const path = require("path");
 
 const saveTask = async (req,res) => {
     if (!req.body.name || !req.body.description) {
@@ -23,6 +25,10 @@ const listTask = async (req,res) => {
     const board = await Board.find({userId:req.user._id});
     if(!board || board.length === 0) return res.status(400).send("Process failed: No task");
     return res.status(200).send({board});
+}
+
+const saveTaskImg = async (req,res) => {
+
 }
 
 const updateTask = async (req,res) => {
@@ -50,4 +56,4 @@ const deleteTask = async (req,res) => {
     return res.status(200).send("Task Delete");
 }
 
-module.exports = { saveTask, listTask, updateTask, deleteTask };
+module.exports = { saveTask, listTask, updateTask, deleteTask , saveTaskImg };
